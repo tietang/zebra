@@ -40,6 +40,8 @@ func TestRobinTheSameWeight(t *testing.T) {
 
     fmt.Println(h.Name, h.Weight, hosts1)
 
+    Convey()
+
 }
 
 func TestRobinDiffWeight(t *testing.T) {
