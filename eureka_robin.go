@@ -32,7 +32,7 @@ func (d *DiscoveryRobin) Next(appName string) (*eureka.Application, *HostInstanc
                 return &app, nil, nil
             }
             for _, ins := range a.Instances {
-                if ins.Status == eureka.UP {
+                if ins.Status == eureka.StatusUp {
                     name := d.ins2name(&ins)
                     host := HostInstance{Id: len(d.hosts[appName]), Name: name, Weight: 1}
                     if !d.hasExists(appName, host) {
