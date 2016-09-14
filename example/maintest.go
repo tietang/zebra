@@ -9,7 +9,7 @@ import (
     "github.com/tietang/go-eureka-client/eureka"
 )
 
-func main() {
+func main2() {
     eurekaUrl := "http://dev.discovery.shishike.com/eureka"
     //	timeout := 10 * time.Second
     //	client := &http.Client{

@@ -2,7 +2,7 @@ package main
 
 import "net/http"
 
-func main() {
+func main1() {
     //	eurekaUrl := "http://dev.discovery.shishike.com/eureka"
     //	eurekaUrl := "http://discovery2.keruyun.com:8761/eureka"
     //	robin := zuul.NewDiscoveryRobin(eurekaUrl, &zuul.Robin{})
@@ -20,5 +20,4 @@ func main() {
     f = func() {}
     println(f == nil)
 
-    http.ServeMux
 }
