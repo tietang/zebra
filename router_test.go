@@ -6,6 +6,7 @@ import (
     "testing"
 
     "github.com/tietang/assert"
+    . "github.com/smartystreets/goconvey/convey"
 )
 
 func TestGetMatchRouteTargetPath(t *testing.T) {
@@ -127,16 +128,24 @@ func TestGetMatchRouteByJson(t *testing.T) {
             "]"
 
     r := &Router{}
-    json.Unmarshal([]byte(s), r.Routes)
+    routes := make([]Route, 3)
+    json.Unmarshal([]byte(s), &routes)
+    r.SetRoutes(routes)
 
-    sp := "/app1/v1/demo"
-    route := r.GetMatchRoute(sp)
-    assert.NotNil(t, route)
-    assert.Equal(t, r.Routes[2].App, route.App)
-    assert.Equal(t, r.Routes[2].Target, route.Target)
-    actualTargetPath := r.GetMatchRouteTargetPath(sp)
-    expPath := strings.TrimSuffix(r.Routes[2].Target, "/**") + strings.TrimPrefix(sp, "/app2")
-    assert.Equal(t, expPath, actualTargetPath)
+    Convey("通过JSON路由模糊匹配", t, func() {
+        sp := "/app1/v1/demo"
+        route := r.GetMatchRoute(sp)
+        So(route, ShouldNotBeNil)
+        So(route.App, ShouldEqual, r.Routes[2].App)
+        So(route.Target, ShouldEqual, r.Routes[2].Target)
+        //assert.NotNil(t, route)
+        //assert.Equal(t, r.Routes[2].App, route.App)
+        //assert.Equal(t, r.Routes[2].Target, route.Target)
+        actualTargetPath := r.GetMatchRouteTargetPath(sp)
+        expPath := strings.TrimSuffix(r.Routes[2].Target, "/**") + strings.TrimPrefix(sp, "/app2")
+        So(actualTargetPath, ShouldEqual, expPath)
+    })
+
 
     //
 

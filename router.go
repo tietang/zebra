@@ -1,7 +1,6 @@
 package zuul
 
 import (
-    "fmt"
     "strings"
 )
 
@@ -31,7 +30,7 @@ type Route struct {
 func (r *Router) AddRoute(route Route) {
     initRoute(&route)
     r.Routes = append(r.Routes, route)
-    fmt.Println(route.App, route.Source, route.Target)
+    //fmt.Println(route.App, route.Source, route.Target)
 }
 
 func initRoute(route *Route) {
@@ -60,7 +59,6 @@ func (r *Router) GetMatchRouteTargetPath(sourcePath string) string {
 }
 
 func (r *Router) GetMatchRoute(sourcePath string) *Route {
-
     for _, v := range r.Routes {
         if isMatch(sourcePath, &v) {
             return &v
@@ -104,6 +102,7 @@ func getRouteTargetPath(route *Route, sourcePath string) string {
 }
 
 func isMatch(sourcePath string, route *Route) bool {
+
     if route.SourceIsFuzzyMatch {
         hasPrefix := strings.HasPrefix(sourcePath, route.SourcePrefix)
         if hasPrefix {
