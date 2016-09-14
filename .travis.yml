@@ -1,1 +1,6 @@
 language: go
+install:
+  - go get github.com/tietang/go-eureka-client
+  - go get github.com/tietang/stats
+  - go get github.com/tietang/hystrix-go
+  - go get github.com/tietang/assert
