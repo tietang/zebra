@@ -37,7 +37,7 @@ func (set *Hook) handle(sig os.Signal, arg interface{}) (err error) {
     panic("won't reach here")
 }
 
-func main() {
+func main1() {
     go sysSignalHandleDemo()
     time.Sleep(time.Hour) // make the main goroutine wait!
 }
