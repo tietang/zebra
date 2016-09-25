@@ -10,7 +10,8 @@ import (
 )
 
 func main2() {
-    eurekaUrl := "http://dev.discovery.shishike.com/eureka"
+    eurekaUrl := "http://127.0.0.1:8761/eureka"
+
     //	timeout := 10 * time.Second
     //	client := &http.Client{
     //		//		CheckRedirect: redirectPolicyFunc,

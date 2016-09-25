@@ -14,12 +14,11 @@ import "github.com/tietang/go-zuul"
 //	url := req.URL
 //	uri := req.RequestURI
 //	w.Write([]byte(strconv.Itoa(h.Count) + " " + uri + "  " + url.Path + "  |  " + url.RawPath + "  |  " + url.RawQuery))
-
 //	h.Count++
 //}
 
 func main() {
-    eurekaUrl := "http://dev.discovery.shishike.com/eureka"
+    eurekaUrl := "http://127.0.0.1:8761/eureka"
 
     //	http.HandleFunc("/info", func(w http.ResponseWriter, req *http.Request) {
     //		w.Write([]byte("{}"))
