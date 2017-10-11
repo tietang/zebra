@@ -1,5 +1,5 @@
-# go-zuul
+# zebra
 
-[![Build Status](https://travis-ci.org/tietang/go-zuul.png?branch=master)](<https://travis-ci.org/tietang/go-zuul>)
+[![Build Status](https://travis-ci.org/tietang/zebra.png?branch=master)](<https://travis-ci.org/tietang/zebra>)
  
 api gateway,router for golang
