@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/tietang/zebra.png?branch=master)](<https://travis-ci.org/tietang/zebra>)
  
 一个基于golang动态网关，提供动态路由和负载均衡，容错。
+详情请查看[wiki](<https://github.com/tietang/zebra/wiki>)。
+
 
 ## 特征：
 
@@ -193,4 +195,3 @@
 
 
  
-请查看[wiki](<https://github.com/tietang/zebra/wiki>)。
