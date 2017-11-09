@@ -38,7 +38,7 @@
 
 # 下载
 
-下载Zebra，为预览版1.0.0
+下载Zebra，为预览版0.2
 
 
 
@@ -50,7 +50,7 @@
 </div>
   
 <ul>
-      <li><a href="https://github.com/tietang/zebra/releases/download/v1.0.0-pre/zebra_darwin_amd64-0.1-pre.tar.gz">0.1.0-pre-64-bit</a></li>
+      <li><a href="https://github.com/tietang/zebra/releases/download/v0.2-pre/zebra_darwin_amd64-0.2-pre.tar.gz">v0.2-pre-64-bit</a></li>
 </ul>
 
 ##  Linux
@@ -171,7 +171,7 @@
 </div>
  
  <ul> 
-     <li><a href="https://github.com/tietang/zebra/releases/download/v1.0.0-pre/zebra_linux_amd64-0.1-pre.tar.gz">0.1.0-pre-64-bit</a></li>
+     <li><a href="https://github.com/tietang/zebra/releases/download/v0.2-pre/zebra_linux_amd64-0.2-pre.tar.gz">v0.2-pre-64-bit</a></li>
      
  </ul>
   
@@ -186,8 +186,8 @@
 </div>
 
 <ul>
-    <li><a href="https://github.com/tietang/zebra/releases/download/v1.0.0-pre/zebra_windows_386-0.1-pre.zip">0.1.0-pre-32-bit</a></li>
-    <li><a href="https://github.com/tietang/zebra/releases/download/v1.0.0-pre/zebra_windows_amd64-0.1-pre.zip">0.1.0-pre-64-bit</a></li>
+    <li><a href="https://github.com/tietang/zebra/releases/download/v0.2-pre/zebra_windows_386-0.2-pre.zip">0.1.0-pre-32-bit</a></li>
+    <li><a href="https://github.com/tietang/zebra/releases/download/v0.2-pre/zebra_windows_amd64-0.2-pre.zip">0.1.0-pre-64-bit</a></li>
 </ul>
 
 
