@@ -186,8 +186,8 @@
 </div>
 
 <ul>
-    <li><a href="https://github.com/tietang/zebra/releases/download/v0.2-pre/zebra_windows_386-0.2-pre.zip">0.1.0-pre-32-bit</a></li>
-    <li><a href="https://github.com/tietang/zebra/releases/download/v0.2-pre/zebra_windows_amd64-0.2-pre.zip">0.1.0-pre-64-bit</a></li>
+    <li><a href="https://github.com/tietang/zebra/releases/download/v0.2-pre/zebra_windows_386-0.2-pre.zip">0.2-pre-32-bit</a></li>
+    <li><a href="https://github.com/tietang/zebra/releases/download/v0.2-pre/zebra_windows_amd64-0.2-pre.zip">0.2-pre-64-bit</a></li>
 </ul>
 
 
