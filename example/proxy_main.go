@@ -1,6 +1,6 @@
 package main
 
-import "github.com/tietang/go-zuul"
+import "github.com/tietang/zebra"
 
 //type Handler struct {
 //	Count int
