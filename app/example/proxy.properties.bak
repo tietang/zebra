@@ -1,0 +1,92 @@
+## proxy port
+#zk跟节点
+bootstrap.zk.enabled=false
+bootstrap.zk.urls=127.0.0.1:2181
+bootstrap.zk.timeout=10s
+bootstrap.zk.root=/zebra/bootstrap
+#consul跟节点
+bootstrap.consul.enabled=false
+bootstrap.consul.address=127.0.0.1:8500
+# consul key路径开始不含"/"
+bootstrap.consul.root=zebra/bootstrap
+##默认为properties配置，即为本文件的配置；如果配置了bootstrap.zk.enabled和bootstrap.consul.enabled值为true时，则zookeeper和consul配置也会起效，并且具有优先获取权，如果找不到再从properties中找。
+##优先级的顺序为consul> zookeeper > properties
+server.port=19001
+#client,ReverseProxy:
+# client: 通过自定义http client请求转发
+# ReverseProxy： 通过httputil.NewSingleHostReverseProxy请求转发
+server.mode=client
+favicon.ico.dir=favicon.ico
+#是否启用golang:MemStats + System stats
+#gms:  g= golang M=MemStats s=System和stats
+server.gms.enabled=true
+server.gms.domain=
+server.gms.port=17980
+server.gms.debug=true
+## hystrix
+hystrix.circuit.enabled=true
+hystrix.default.Timeout=6000
+hystrix.default.MaxConcurrentRequests=100
+hystrix.default.RequestVolumeThreshold=20
+hystrix.default.SleepWindow=5000
+hystrix.default.ErrorPercentThreshold=50
+##http server config
+http.server.ReadTimeout=10000
+http.server.WriteTimeout=10000
+## http config
+http.client.connect.timeout=3000
+#----------lb config----------------------------------------------------------#
+#WeightRobinRound,random,round,hash,fibonacci default：WeightRobinRound
+lb.name=WeightRobinRound
+lb.fail.max=3
+lb.fail.timeout.window=30s
+#lb config
+lb.log.selected.enabled=true
+lb.log.selected.all=false
+#---------route config--------------------------------------------------------#
+#props 文件的静态路由规则配置
+props.routes.enabled=false
+props.routes.strip.prefix=false
+props.discovery.enbaled=false
+props.discovery.dir=services
+#props.routes.dir=/Users/tietang/my/gitcode/r_app/src/github.com/tietang/zebra/example/routes
+#props.routes.dir=/Users/tietang/Documents/git.oschina/r_app/src/github.com/tietang/zebra/example/routes
+# eureka 服务发现：动态路由和负载均衡
+eureka.server.enabled=false
+## 多个集群用逗号分隔
+eureka.server.cluster=cluster1,cluster2
+#eureka.server.urls=http://eureka.didispace.com/eureka
+eureka.server.urls=http://172.16.1.248:8761/eureka
+eureka.discovery.interval=10s
+## consul 服务发现：动态路由和负载均衡
+consul.enabled=false
+#consul.address=127.0.0.1:8500
+consul.address=172.16.1.248:8500
+consul.discovery.interval=10s
+## zookeeper 静态路由规则配置
+zk.enabled=false
+##zk连接字符串，多个逗号分隔:192.168.1.2:2181,192.168.1.3:2181,192.168.1.4:2181
+zk.conn.urls=127.0.0.1:2181
+#zk跟节点
+zk.root.path=/zebra/routes/
+#多个逗号分割
+zk.contexts=routes
+zk.discovery.enbaled=false
+zk.discovery.root=/services/
+# zookeeper动态路由和负载均衡。基于curator服务发现，http://curator.apache.org/curator-x-discovery/index.html
+#sql 数据配置路由规则和实例注册
+sql.routes.enabled=false
+sql.driverName=mysql
+sql.url=root:kry02Local@?DB@tcp(172.16.1.248:3306)/po?charset=utf8
+#sql.url=root:root@tcp(127.0.0.1:3306)/route?charset=utf8
+# Kubernetes服务发现支持
+k8s.enabled=true
+k8s.urls=http://172.16.30.112:8080
+#----------------metrics export---------------------
+## metrics export
+metrics.export.influx.enabled=false
+metrics.export.influx.interval=10s
+metrics.export.influx.url=http://127.0.0.1:8086
+metrics.export.influx.database=metrics
+metrics.export.influx.username=
+metrics.export.influx.password=

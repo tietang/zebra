@@ -1,0 +1,8 @@
+time="2018-12-09T22:00:29+08:00" level=error msg="Get http://172.16.1.248:8761/eureka/apps: dial tcp 172.16.1.248:8761: i/o timeout"
+time="2018-12-09T22:00:29+08:00" level=error msg="Get http://172.16.1.248:8761/eureka/apps: dial tcp 172.16.1.248:8761: i/o timeout"
+time="2018-12-09T22:01:29+08:00" level=error msg="Get http://172.16.1.248:8761/eureka/apps: dial tcp 172.16.1.248:8761: i/o timeout"
+time="2018-12-09T22:01:29+08:00" level=error msg="Get http://172.16.1.248:8761/eureka/apps: dial tcp 172.16.1.248:8761: i/o timeout"
+time="2018-12-09T22:02:29+08:00" level=error msg="Get http://172.16.1.248:8761/eureka/apps: dial tcp 172.16.1.248:8761: i/o timeout"
+time="2018-12-09T22:02:29+08:00" level=error msg="Get http://172.16.1.248:8761/eureka/apps: dial tcp 172.16.1.248:8761: i/o timeout"
+time="2018-12-09T22:03:29+08:00" level=error msg="Get http://172.16.1.248:8761/eureka/apps: dial tcp 172.16.1.248:8761: i/o timeout"
+time="2018-12-09T22:03:29+08:00" level=error msg="Get http://172.16.1.248:8761/eureka/apps: dial tcp 172.16.1.248:8761: i/o timeout"

@@ -1,8 +1,0 @@
-language: go
-
-install:
-  - go get github.com/tietang/go-eureka-client/eureka
-  - go get github.com/tietang/stats
-  - go get github.com/tietang/hystrix-go/hystrix
-  - go get github.com/tietang/assert
-  - go get github.com/smartystreets/goconvey
