@@ -82,12 +82,12 @@ func NewUniversalHandler(conf kvs.ConfigSource) *UniversalHandler {
 		rh.Balancer.register(ers)
 	}
 	//
-	//if conf.GetBoolDefault(KEY_K8S_ENABLED, false) {
-	//    log.Info("k8s discovery enabled.")
-	//    prs := NewKubernetesRouteSource(conf)
-	//    rh.Router.register(prs)
-	//    rh.Balancer.register(prs)
-	//}
+	if conf.GetBoolDefault(KEY_K8S_ENABLED, false) {
+		log.Info("k8s discovery enabled.")
+		prs := NewKubernetesRouteSource(conf)
+		rh.Router.register(prs)
+		rh.Balancer.register(prs)
+	}
 	//
 	if conf.GetBoolDefault(KEY_CONSUL_ENABLED, false) {
 		log.Info("consul discovery&routes enabled.")

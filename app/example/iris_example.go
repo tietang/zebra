@@ -27,7 +27,7 @@ func init() {
 	formatter.DisableColors = false
 	formatter.FullTimestamp = true
 	formatter.ForceFormatting = true
-	//formatter.EnableFuncNameLog = false
+	//formatter.EnableLogFuncName = false
 	formatter.SetColorScheme(&utils.ColorScheme{
 		InfoLevelStyle:  "green",
 		WarnLevelStyle:  "yellow",
