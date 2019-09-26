@@ -1,128 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e259e1fa-6212-47ca-bb2f-e4c899f5de56" name="Default" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
+    <list default="true" id="2cc29465-c936-4bf7-8b83-d603d4f5ea11" name="Default Changelist" comment="add 灰度部署支持">
+      <change afterPath="$PROJECT_DIR$/beta/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/router/req_cond.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/root.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/thriftCompiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gopkg.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gopkg.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/example/k8s.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/example/k8s.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/example/k8s_eg.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/example/k8s_eg.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main_consul.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/main_consul.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main_zk.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/main_zk.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proxy.ini" beforeDir="false" afterPath="$PROJECT_DIR$/app/proxy.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tools/zebra_const_default.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/tools/zebra_const_default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discovery/k8s.go" beforeDir="false" afterPath="$PROJECT_DIR$/discovery/k8s.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discovery/k8s_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/discovery/k8s_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/proxy-zk.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/proxy-zk.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/http_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_endpoints.go" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_endpoints.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/discovery_lb.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/discovery_lb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/lb.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/lb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/route_consul.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/route_consul.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/route_eureka.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/route_eureka.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/route_k8s.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/route_k8s.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/route_zk_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/route_zk_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/static/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/ui/static/demo.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="180">
-                <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="GOROOT" path="$USER_HOME$/java/go" />
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
-      </map>
-    </option>
-  </component>
-  <component name="GoLibraries">
-    <option name="urls">
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
       <list>
-        <option value="file://$PROJECT_DIR$/../../../.." />
+        <option value="Go File" />
       </list>
     </option>
   </component>
-  <component name="GradleLocalSettings">
-    <option name="modificationStamps">
+  <component name="GOROOT" path="$USER_HOME$/java/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$USER_HOME$/Documents/git.oschina/jodd-quickstart/webapp1" value="1438355829000" />
-        <entry key="$USER_HOME$/Documents/git.oschina/rss" value="11413649211000" />
-        <entry key="$USER_HOME$/demo/code/quasar" value="13078616130000" />
-        <entry key="$USER_HOME$/demo/zuul" value="2961161946000" />
-        <entry key="$PROJECT_DIR$/../../../../../../forks/Hystrix" value="21853238835000" />
-        <entry key="$USER_HOME$/w2/springfox-demos" value="8637334188000" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="-334" />
-    <option name="y" value="-1200" />
-    <option name="width" value="1920" />
-    <option name="height" value="1200" />
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>Spelling</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>SpellCheckingInspection</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="zebra" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zebra" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
+  <component name="ProjectId" id="1R5zlu6bPoYouNDeDCb9Hmf0qM1" />
   <component name="PropertiesComponent">
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
-    <property name="configurable.Global.libraries.is.expanded" value="true" />
-    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
-    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
-    <property name="go.gopath.indexing.explicitly.defined" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/shishike_projects" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -136,248 +88,53 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+  <component name="RunManager" selected="Go Build.go build github.com/tietang/zebra/app">
+    <configuration name="go build github.com/tietang/zebra/app" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zebra" />
+      <working_directory value="$PROJECT_DIR$/app" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/app/main.go" />
+      <package value="github.com/tietang/zebra/app" />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration name="go build github.com/tietang/zebra/beta" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zebra" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/beta/main.go" />
+      <package value="github.com/tietang/zebra/beta" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <properties />
-      <listeners />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
-      <Host>localhost</Host>
-      <Port>5050</Port>
-    </configuration>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration>$USER_HOME$/.subversion</configuration>
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="e259e1fa-6212-47ca-bb2f-e4c899f5de56" name="Default" comment="" />
-      <created>1532049527973</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1532049527973</updated>
-      <workItem from="1532049530228" duration="425000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="425000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-284" y="-1200" width="1920" height="1200" extended-state="0" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25239617" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.20713525" side_tool="true" visible="true" weight="0.32920355" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.79286474" visible="true" weight="0.32920355" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info anchor="right" id="LuaJ" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-    </layout>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/tietang/zebra/app" />
+        <item itemvalue="Go Build.go build github.com/tietang/zebra/beta" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add 灰度部署支持" />
+    <option name="LAST_COMMIT_MESSAGE" value="add 灰度部署支持" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Gopkg.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1768">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/middlewares/jwt.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/discovery/k8s.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3677">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bugs/2018.01.04.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="126">
-            <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main_windows.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main_unix.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/example/gin_example.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <folding>
-            <element signature="e#14#245#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-548">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding>
-            <element signature="e#14#207#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main_consul.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#14#168#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/go.mod">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gopkg.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="589" column="10" selection-start-line="589" selection-start-column="10" selection-end-line="589" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="180">
-            <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Python 2.7.6 (/Library/Frameworks/Python.framework/Versions/2.7/bin/python) interpreter library</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.6</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <proxy>direct</proxy>
   </component>
 </project>

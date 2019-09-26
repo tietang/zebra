@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/zebra.iml" filepath="$PROJECT_DIR$/zebra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/zebra.iml" filepath="$PROJECT_DIR$/.idea/zebra.iml" />
     </modules>
   </component>
 </project>

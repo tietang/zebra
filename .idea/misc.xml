@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="Go 1.7.3" project-jdk-type="Go SDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings />
-    </option>
-  </component>
-  <component name="ZooKeeperConfig">
-    <option name="host" value="" />
-    <option name="port" value="2181" />
-    <option name="charset" value="UTF-8" />
-    <option name="whitePaths" value="" />
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
   </component>
 </project>

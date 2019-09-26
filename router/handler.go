@@ -2,6 +2,7 @@ package router
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/kataras/iris/core/errors"
 	"github.com/rcrowley/go-metrics"
 	log "github.com/sirupsen/logrus"
@@ -57,10 +58,11 @@ type RequestContext struct {
 }
 
 type UniversalHandler struct {
-	HttpClients *httpclient.HttpClients
-	conf        kvs.ConfigSource
-	Balancer    *DiscoveryBalancer
-	Router      *Router
+	HttpClients      *httpclient.HttpClients
+	conf             kvs.ConfigSource
+	Balancer         *DiscoveryBalancer
+	Router           *Router
+	RequestCondition RequestCondition
 }
 
 func NewUniversalHandler(conf kvs.ConfigSource) *UniversalHandler {
@@ -82,12 +84,12 @@ func NewUniversalHandler(conf kvs.ConfigSource) *UniversalHandler {
 		rh.Balancer.register(ers)
 	}
 	//
-	if conf.GetBoolDefault(KEY_K8S_ENABLED, false) {
-		log.Info("k8s discovery enabled.")
-		prs := NewKubernetesRouteSource(conf)
-		rh.Router.register(prs)
-		rh.Balancer.register(prs)
-	}
+	//if conf.GetBoolDefault(KEY_K8S_ENABLED, false) {
+	//	log.Info("k8s discovery enabled.")
+	//	prs := NewKubernetesRouteSource(conf)
+	//	rh.Router.register(prs)
+	//	rh.Balancer.register(prs)
+	//}
 	//
 	if conf.GetBoolDefault(KEY_CONSUL_ENABLED, false) {
 		log.Info("consul discovery&routes enabled.")
@@ -116,6 +118,27 @@ func NewUniversalHandler(conf kvs.ConfigSource) *UniversalHandler {
 		prs := NewSQLRouteSource(conf)
 		rh.Router.register(prs)
 		rh.Balancer.register(prs)
+	}
+
+	if conf.GetBoolDefault("traffic.cond.enabled", false) {
+		typ, err := conf.Get("traffic.cond.type")
+		if err != nil || typ == "" {
+			log.Info("not config traffic.cond.type")
+		} else {
+			if typ == "composite" {
+				typs := conf.Strings("traffic.cond.composites")
+				c := new(CompositeRequestCondition)
+				for _, typ := range typs {
+					rc := RequestConditions[typ]
+					c.Add(rc)
+				}
+				rh.RequestCondition = c
+			} else {
+				rc := RequestConditions[typ]
+				rh.RequestCondition = rc
+			}
+		}
+
 	}
 
 	//外部注册扩展
@@ -276,7 +299,13 @@ func (h *UniversalHandler) innerForward(ctx *RequestContext) error {
 	//负载均衡
 	//_, hostIns, ins := h.DiscoveryRobin.Next(appName)\\
 	path := ctx.Request.URL.Path
-	ctx.HostInstance = h.Balancer.Next(ctx.AppName, path)
+	isEnabledGray := h.conf.GetBoolDefault(fmt.Sprintf("traffic.cond.%s.enabled", ctx.AppName), false)
+	if isEnabledGray && h.RequestCondition != nil && h.RequestCondition.Matched(ctx) {
+		ctx.HostInstance = h.Balancer.Next(ctx.AppName, path, true)
+	} else {
+		ctx.HostInstance = h.Balancer.Next(ctx.AppName, path, false)
+	}
+
 	//var ins *eureka.InstanceInfo
 	//ins = hostIns.ExternalInstance.(*eureka.InstanceInfo)
 
