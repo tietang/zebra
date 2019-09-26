@@ -130,7 +130,7 @@ const (
     KEY_EUREKA_DISCOVERY_INTERVAL = "eureka.discovery.interval"
     //default value
     DEFAULT_EUREKA_SERVER_ENABLED     = "false"
-    DEFAULT_EUREKA_SERVER_URLS        = "http://dev.discovery.shishike.com/eureka"
+    DEFAULT_EUREKA_SERVER_URLS        = "http://127.0.0.1:8761/eureka"
     DEFAULT_EUREKA_DISCOVERY_INTERVAL = time.Duration(10000) * time.Millisecond
 )
 
