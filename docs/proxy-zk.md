@@ -60,13 +60,13 @@ proxy.DefaultRun()
 
 ```
 
-/configs/apps/eureka/server=urls=http://dev.discovery.shishike.com/eureka
+/configs/apps/eureka/server=urls=http://127.0.0.1:8761/eureka
 /configs/apps/hystrix/default=ErrorPercentThreshold=50
 /configs/apps/hystrix/default=MaxConcurrentRequests=100
 /configs/apps/hystrix/default=RequestVolumeThreshold=20
 /configs/apps/hystrix/default=SleepWindow=5000
 /configs/apps/hystrix/default=Timeout=6000
-/configs/apps/routes=calm-router=##sync-v5\n/CalmRouter/v1/sync/owns=sync-v5,/v1/sync/owns
+/configs/apps/routes=router=##app-order\n/order/v1/create/=apporder,/v1/order/create
 /configs/apps/server=port=19002
 ```
 
