@@ -34,13 +34,21 @@ func register(rc RequestCondition) {
 type RequestCondition interface {
 	Matched(ctx *RequestContext) bool
 	Id() string
+	Conf(conf kvs.ConfigSource)
+}
+type BaseConfRequestCondition struct {
+	conf kvs.ConfigSource
+}
+
+func (b *BaseConfRequestCondition) Conf(conf kvs.ConfigSource) {
+	b.conf = conf
 }
 
 //在conf中增加以下kv来满足：
 // traffic.cond.AppName.client.addrs=192.168.1.2,192.168.1.3 多个IP逗号分割，
 // traffic.cond.AppName.version=1.0.1 指定灰度版本来设定灰度版本
 type ClientAddrRequestCondition struct {
-	conf kvs.ConfigSource
+	BaseConfRequestCondition
 }
 
 func (r *ClientAddrRequestCondition) Id() string {
@@ -58,19 +66,21 @@ func getClientIP(ctx *RequestContext) string {
 	xff := ctx.Request.Header.Get("X-Forwarded-For")
 	if xff == "" {
 		ra := ctx.Request.Header.Get("X-Real-IP")
-		if raddr != "" {
+		if ra != "" {
 			raddr = ra
 		}
 	} else {
 		xffs := strings.Split(xff, ",")
 		raddr = xffs[0]
 	}
+	raddr = strings.Split(raddr, ":")[0]
+	fmt.Println(raddr)
 	return raddr
 
 }
 
 type HeaderValueRequestCondition struct {
-	conf kvs.ConfigSource
+	BaseConfRequestCondition
 }
 
 func (r *HeaderValueRequestCondition) Id() string {
@@ -105,7 +115,7 @@ func contains(ranges []string, v string) bool {
 }
 
 type CookieValueRequestCondition struct {
-	conf kvs.ConfigSource
+	BaseConfRequestCondition
 }
 
 func (r *CookieValueRequestCondition) Id() string {
@@ -126,7 +136,7 @@ func (r *CookieValueRequestCondition) Matched(ctx *RequestContext) bool {
 }
 
 type UrlParamsRequestCondition struct {
-	conf kvs.ConfigSource
+	BaseConfRequestCondition
 }
 
 func (r *UrlParamsRequestCondition) Id() string {
@@ -144,7 +154,7 @@ func (r *UrlParamsRequestCondition) Matched(ctx *RequestContext) bool {
 }
 
 type FormRequestCondition struct {
-	conf kvs.ConfigSource
+	BaseConfRequestCondition
 }
 
 func (r *FormRequestCondition) Id() string {
@@ -167,6 +177,9 @@ type CompositeRequestCondition struct {
 	Name              string
 }
 
+func (b *CompositeRequestCondition) Conf(conf kvs.ConfigSource) {
+	b.conf = conf
+}
 func (r *CompositeRequestCondition) Id() string {
 	if r.Name == "" {
 		return "composite"
@@ -174,11 +187,14 @@ func (r *CompositeRequestCondition) Id() string {
 		return r.Name
 	}
 }
+
 func (r *CompositeRequestCondition) Add(cond RequestCondition) {
 	r.RequestConditions = append(r.RequestConditions, cond)
 }
+
 func (r *CompositeRequestCondition) Matched(ctx *RequestContext) bool {
 	for _, cond := range r.RequestConditions {
+		cond.Conf(r.conf)
 		if cond.Matched(ctx) {
 			return true
 		}

@@ -27,6 +27,7 @@ func (h *HttpProxyServer) initEndpoints() {
 	h.routesEndpoint()
 	h.hostsEndpoint()
 	h.faviconIconEndpoint()
+	h.Post("/admin/gray", NewAdminEndpoints(h, h.conf).AdminGrayConfEndpoint)
 	//dog
 	//h.dogStatsEndpoint()
 	//h.dogSysEndpoint()

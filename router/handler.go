@@ -54,7 +54,8 @@ type RequestContext struct {
 	logObjects map[string]interface{}
 
 	//
-	isCanRetry bool
+	isCanRetry    bool
+	isGrayRequest bool
 }
 
 type UniversalHandler struct {
@@ -137,6 +138,7 @@ func NewUniversalHandler(conf kvs.ConfigSource) *UniversalHandler {
 				rc := RequestConditions[typ]
 				rh.RequestCondition = rc
 			}
+			rh.RequestCondition.Conf(conf)
 		}
 
 	}
@@ -301,8 +303,10 @@ func (h *UniversalHandler) innerForward(ctx *RequestContext) error {
 	path := ctx.Request.URL.Path
 	isEnabledGray := h.conf.GetBoolDefault(fmt.Sprintf("traffic.cond.%s.enabled", ctx.AppName), false)
 	if isEnabledGray && h.RequestCondition != nil && h.RequestCondition.Matched(ctx) {
+		ctx.isGrayRequest = true
 		ctx.HostInstance = h.Balancer.Next(ctx.AppName, path, true)
 	} else {
+		ctx.isGrayRequest = false
 		ctx.HostInstance = h.Balancer.Next(ctx.AppName, path, false)
 	}
 
@@ -368,6 +372,10 @@ func (h *UniversalHandler) innerForwardReverseProxy(ctx *RequestContext) error {
 	if h.conf.GetBoolDefault(SERVER_DEBUG, false) {
 		ctx.Writer.Header().Add("X-Forward-Host", strings.Join([]string{ctx.HostInstance.Address, ctx.HostInstance.Port}, ":"))
 	}
+	if ctx.isGrayRequest {
+		ctx.Writer.Header().Add("X-Gray-version", ctx.HostInstance.Version)
+	}
+
 	proxy.ModifyResponse = h.modifyResponse(ctx)
 	proxy.ServeHTTP(ctx.Writer, ctx.Request)
 	//val := reflect.ValueOf(ctx.Writer)
@@ -429,6 +437,9 @@ func (h *UniversalHandler) director0(ctx *RequestContext) func(req *http.Request
 			req.Header.Set("User-Agent", "")
 		}
 		req.Header.Add("X-Proxy-server", HTTP_PROXY_SERVER_NAME)
+		if ctx.isGrayRequest {
+			req.Header.Add("X-Gray", "true")
+		}
 		ctx.rawUrl = req.URL.String()
 		log.Debug("backend url: ", req.URL.String())
 	}
@@ -459,7 +470,11 @@ func (h *UniversalHandler) director1(ctx *RequestContext) func(req *http.Request
 			// explicitly disable User-Agent so it's not set to default value
 			req.Header.Set("User-Agent", "")
 		}
+
 		req.Header.Add("X-Proxy-server", HTTP_PROXY_SERVER_NAME)
+		if ctx.isGrayRequest {
+			req.Header.Add("X-Gray", "true")
+		}
 		ctx.rawUrl = req.URL.String()
 	}
 }
@@ -495,6 +510,10 @@ func (h *UniversalHandler) innerForwardClient(ctx *RequestContext) error {
 		}
 	}
 	req.Header.Add("X-Proxy-server", utils.HTTP_PROXY_SERVER_NAME)
+	if ctx.isGrayRequest {
+		req.Header.Add("X-Gray", "true")
+	}
+
 	log.Debug("remote: ", req)
 	//调用请求
 	res, err := h.HttpClients.Do(ctx.AppName, req)
@@ -519,6 +538,9 @@ func (h *UniversalHandler) innerForwardClient(ctx *RequestContext) error {
 	ctx.Writer.Header().Add("X-Proxy-GRPCServer", "zebra")
 	if h.conf.GetBoolDefault(SERVER_DEBUG, false) {
 		ctx.Writer.Header().Add("X-Forward-Host", strings.Join([]string{ctx.HostInstance.Address, ctx.HostInstance.Port}, ":"))
+	}
+	if ctx.isGrayRequest {
+		ctx.Writer.Header().Add("X-Gray-version", ctx.HostInstance.Version)
 	}
 	ctx.Writer.WriteHeader(res.StatusCode)
 
