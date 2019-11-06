@@ -1,8 +1,7 @@
 package main
 
 import (
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12"
 	"github.com/tietang/props/kvs"
 	"github.com/tietang/zebra/router"
 	"strconv"
@@ -11,7 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/tietang/go-utils"
 	zutils "github.com/tietang/zebra/utils"
-)
+) 
 
 func init() {
 	//formatter := &log.TextFormatter{}
@@ -53,7 +52,7 @@ func main() {
 	handler := router.NewUniversalHandler(conf)
 	app := iris.New()
 	// Resource:  http://localhost:8080
-	app.Any("/{asset:path}", func(ctx context.Context) {
+	app.Any("/{asset:path}", func(ctx iris.Context) {
 		ok := handler.Handle(ctx.ResponseWriter(), ctx.Request())
 		if !ok {
 			ctx.Next()
@@ -61,22 +60,22 @@ func main() {
 	})
 	// Method:   GET
 	// Resource: http://localhost:8080/
-	app.Handle("GET", "/", func(ctx context.Context) {
+	app.Handle("GET", "/", func(ctx iris.Context) {
 		ctx.HTML("<b>Hello world!</b>")
 	})
-	app.Handle("GET", "/favicon.ico", func(ctx context.Context) {
+	app.Handle("GET", "/favicon.ico", func(ctx iris.Context) {
 		ctx.Binary(zutils.ICON_DATA)
 	})
 	// same as app.Handle("GET", "/ping", [...])
 	// Method:   GET
 	// Resource: http://context:8080/ping
-	app.Get("/ping", func(ctx context.Context) {
+	app.Get("/ping", func(ctx iris.Context) {
 		ctx.WriteString("pong")
 	})
 
 	// Method:   GET
 	// Resource: http://localhost:8080/hello
-	app.Get("/hello", func(ctx context.Context) {
+	app.Get("/hello", func(ctx iris.Context) {
 		ctx.JSON(context.Map{"message": "Hello iris web framework."})
 	})
 

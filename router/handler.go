@@ -2,13 +2,7 @@ package router
 
 import (
 	"encoding/json"
-	"github.com/kataras/iris/core/errors"
-	"github.com/rcrowley/go-metrics"
-	log "github.com/sirupsen/logrus"
-	"github.com/tietang/hystrix-go/hystrix"
-	"github.com/tietang/props/kvs"
-	"github.com/tietang/zebra/httpclient"
-	"github.com/tietang/zebra/utils"
+	"errors"
 	"io"
 	"math"
 	"net"
@@ -18,6 +12,13 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/rcrowley/go-metrics"
+	log "github.com/sirupsen/logrus"
+	"github.com/tietang/hystrix-go/hystrix"
+	"github.com/tietang/props/kvs"
+	"github.com/tietang/zebra/httpclient"
+	"github.com/tietang/zebra/utils"
 )
 
 const (

@@ -101,7 +101,7 @@ handler := router.NewUniversalHandler(conf)
 handler := router.NewUniversalHandler(conf)
 	app := iris.New()
 	// Resource:  http://localhost:8080
-	app.Any("/{asset:path}", func(ctx context.Context) {
+	app.Any("/{asset:path}", func(ctx iris.Context) {
 		ok := handler.Handle(ctx.ResponseWriter(), ctx.Request())
 		if !ok {
 			ctx.Next()
@@ -111,13 +111,13 @@ handler := router.NewUniversalHandler(conf)
 	// same as app.Handle("GET", "/ping", [...])
 	// Method:   GET
 	// Resource: http://context:8080/ping
-	app.Get("/ping", func(ctx context.Context) {
+	app.Get("/ping", func(ctx iris.Context) {
 		ctx.WriteString("pong")
 	})
 
 	// Method:   GET
 	// Resource: http://localhost:8080/hello
-	app.Get("/hello", func(ctx context.Context) {
+	app.Get("/hello", func(ctx iris.Context) {
 		ctx.JSON(context.Map{"message": "Hello iris web framework."})
 	})
 	
