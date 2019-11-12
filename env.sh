@@ -10,11 +10,4 @@ echo ${PROJECT_PATH}
 
 
 export GOPATH=$GOPATH:${PROJECT_PATH}
-
-alias SET_SOCKS5_PROXY='polipo socksParentProxy=127.0.0.1:1086 proxyAddress=0.0.0.0'
-
-alias SET_HTTP_HTTPS_PROXY='env http_proxy=http://127.0.0.1:8123 https_proxy=http://127.0.0.1:8123'
-
-# SET_HTTP_HTTPS_PROXY dep init -v
-#SET_SOCKS5_PROXY
-#SET_HTTP_HTTPS_PROXY dep init -v
+export GOPROXY=https://mirrors.aliyun.com/goproxy/
