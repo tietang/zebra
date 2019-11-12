@@ -289,40 +289,13 @@
   branch = "master"
   name = "github.com/kataras/golog"
   packages = ["."]
-  revision = "03be101463868edc5a81f094fc68a5f6c1b5503a"
+  revision = "19157c2f233395a67689a25a8609c4d9e99900ec"
+  version = "v0.0.9"
 
 [[projects]]
   name = "github.com/kataras/iris"
-  packages = [
-    ".",
-    "cache",
-    "cache/cfg",
-    "cache/client",
-    "cache/client/rule",
-    "cache/entry",
-    "cache/ruleset",
-    "cache/uri",
-    "context",
-    "core/errors",
-    "core/handlerconv",
-    "core/host",
-    "core/maintenance",
-    "core/maintenance/version",
-    "core/memstore",
-    "core/netutil",
-    "core/router",
-    "core/router/macro",
-    "core/router/macro/interpreter/ast",
-    "core/router/macro/interpreter/lexer",
-    "core/router/macro/interpreter/parser",
-    "core/router/macro/interpreter/token",
-    "core/router/node",
-    "middleware/logger",
-    "middleware/recover",
-    "view"
-  ]
-  revision = "e1e309c0fe31acda872cdf4833ca8402034cbee2"
-  version = "v10.6.5"
+  revision = "797faeceddaf37b4d6699bb0cdbec78e51f60a0d"
+  version = "v12.0.1"
 
 [[projects]]
   branch = "master"
@@ -331,7 +304,7 @@
     ".",
     "terminal"
   ]
-  revision = "a9733b5b6b83d32b479aacd51d26ef6018261963"
+  revision = "ea782b38602d1e5df3c2b891978a1f80d917a6bd"
 
 [[projects]]
   name = "github.com/kataras/survey"

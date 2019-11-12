@@ -1,6 +1,6 @@
 module github.com/tietang/zebra
 
-go 1.12
+go 1.13
 
 //被墙的原因，替换golang.org源为github.com源
 replace (
@@ -26,33 +26,22 @@ replace (
 )
 
 require (
-	cloud.google.com/go v0.34.0 // indirect
 	github.com/ArthurHlt/gominlog v0.0.0-20170402142412-72eebf980f46 // indirect
-	github.com/Joker/hpp v1.0.0 // indirect
-	github.com/Joker/jade v0.0.0-20180419144541-8828253bfc54 // indirect
 	github.com/StackExchange/wmi v0.0.0-20180116203802-5d049714c4a6 // indirect
 	github.com/ajg/form v1.5.1 // indirect
-	github.com/aymerick/raymond v0.0.0-20180322193309-b565731e1464 // indirect
 	github.com/codegangsta/inject v0.0.0-20140425184007-37d7f8432a3e // indirect
 	github.com/deckarep/golang-set v0.0.0-20171013212420-1d4478f51bed
-	github.com/denisenkom/go-mssqldb v0.0.0-20190315220205-a8ed825ac853 // indirect
-	github.com/eknkc/amber v0.0.0-20171010120322-cdade1c07385 // indirect
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect
 	github.com/fatih/color v1.4.1 // indirect
-	github.com/fatih/structs v1.0.0 // indirect
-	github.com/flosch/pongo2 v0.0.0-20180611110828-67f4ff8560df // indirect
 	github.com/fukata/golang-stats-api-handler v1.0.0
 	github.com/gavv/monotime v0.0.0-20171021193802-6f8212e8d10d // indirect
-	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7 // indirect
 	github.com/gin-gonic/gin v0.0.0-20170702092826-d459835d2b07
 	github.com/go-ini/ini v1.37.0
 	github.com/go-martini/martini v0.0.0-20140519164645-49411a5b6468
 	github.com/go-ole/go-ole v1.2.1 // indirect
 	github.com/go-sql-driver/mysql v1.4.1
-	github.com/go-xorm/builder v0.2.0 // indirect
-	github.com/go-xorm/core v0.6.0 // indirect
-	github.com/go-xorm/xorm v0.7.0
+	github.com/go-xorm/xorm v0.7.9
 	github.com/google/btree v1.0.0 // indirect
 	github.com/google/gofuzz v0.0.0-20161122191042-44d81051d367 // indirect
 	github.com/googleapis/gnostic v0.0.0-20170729233727-0c5108395e2d // indirect
@@ -61,63 +50,42 @@ require (
 	github.com/hashicorp/go-cleanhttp v0.0.0-20171218145408-d5fe4b57a186 // indirect
 	github.com/hashicorp/go-rootcerts v0.0.0-20160503143440-6bb64b370b90 // indirect
 	github.com/hashicorp/go-uuid v1.0.1 // indirect
-	github.com/hashicorp/go-version v0.0.0-20180322230233-23480c066577 // indirect
 	github.com/hashicorp/memberlist v0.1.3 // indirect
 	github.com/hashicorp/serf v0.0.0-20180504200640-4b67f2c2b2bb // indirect
 	github.com/imkira/go-interpol v1.1.0 // indirect
 	github.com/influxdata/influxdb v1.6.0 // indirect
-	github.com/iris-contrib/formBinder v0.0.0-20171010160137-ad9fb86c356f // indirect
-	github.com/iris-contrib/httpexpect v0.0.0-20180314041918-ebe99fcebbce // indirect
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
 	github.com/jonboulle/clockwork v0.1.0 // indirect
-	github.com/json-iterator/go v0.0.0-20180701071628-ab8a2e0c74be // indirect
 	github.com/jtolds/gls v4.2.1+incompatible // indirect
-	github.com/juju/errors v0.0.0-20170703010042-c7d06af17c68 // indirect
 	github.com/juju/loggo v0.0.0-20190212223446-d976af380377 // indirect
-	github.com/juju/testing v0.0.0-20180920084828-472a3e8b2073 // indirect
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
-	github.com/kataras/golog v0.0.0-20180321173939-03be10146386 // indirect
-	github.com/kataras/iris v10.6.5+incompatible
-	github.com/kataras/pio v0.0.0-20180511174041-a9733b5b6b83 // indirect
+	github.com/kataras/iris/v12 v12.0.1
 	github.com/kataras/survey v1.3.4 // indirect
-	github.com/klauspost/compress v1.3.0 // indirect
 	github.com/klauspost/cpuid v0.0.0-20170728055534-ae7887de9fa5 // indirect
-	github.com/kr/pretty v0.1.0 // indirect
 	github.com/lafikl/consistent v0.0.0-20171026144656-ea75672e5603
 	github.com/lestrrat/go-envload v0.0.0-20180220120943-6ed08b54a570 // indirect
 	github.com/lestrrat/go-file-rotatelogs v0.0.0-20180223000712-d3151e2a480f
 	github.com/lestrrat/go-strftime v0.0.0-20180220042222-ba3bf9c1d042 // indirect
-	github.com/lib/pq v1.0.0 // indirect
 	github.com/mattn/go-colorable v0.0.0-20170210172801-5411d3eea597
 	github.com/mattn/go-isatty v0.0.0-20170307163044-57fdcb988a5c // indirect
-	github.com/mattn/go-sqlite3 v1.10.0 // indirect
 	github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b // indirect
-	github.com/microcosm-cc/bluemonday v0.0.0-20180621201946-f0761eb8ed07 // indirect
 	github.com/minio/blake2b-simd v0.0.0-20160723061019-3f5f724cb5b1 // indirect
-	github.com/mitchellh/go-homedir v0.0.0-20180523094522-3864e76763d9 // indirect
 	github.com/mitchellh/go-testing-interface v1.0.0 // indirect
-	github.com/mitchellh/mapstructure v0.0.0-20171017171808-06020f85339e // indirect
-	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/pascaldekloe/goe v0.1.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a
 	github.com/rifflock/lfshook v0.0.0-20180227222202-bf539943797a
-	github.com/ryanuber/columnize v0.0.0-20170703205827-abc90934186a // indirect
 	github.com/samuel/go-zookeeper v0.0.0-20180130194729-c4fab1ac1bec
 	github.com/satori/go.uuid v0.0.0-20180103174451-36e9d2ebbde5 // indirect
 	github.com/sergi/go-diff v1.0.0 // indirect
 	github.com/shirou/gopsutil v0.0.0-20180625081143-4a180b209f5f
 	github.com/shirou/w32 v0.0.0-20160930032740-bb4de0191aa4 // indirect
-	github.com/shurcooL/sanitized_anchor_name v0.0.0-20170918181015-86672fcb3f95 // indirect
 	github.com/sirupsen/logrus v1.2.0
 	github.com/smartystreets/assertions v0.0.0-20180301161246-7678a5452ebe // indirect
 	github.com/smartystreets/goconvey v0.0.0-20170602164621-9e8dc3f972df
 	github.com/smartystreets/gunit v0.0.0-20180314194857-6f0d6275bdcd // indirect
-	github.com/spf13/pflag v1.0.3 // indirect
-	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/tebeka/strftime v0.0.0-20140926081919-3f9c7761e312 // indirect
 	github.com/thoas/stats v0.0.0-20170926101542-37829025d224
 	github.com/tietang/assert v0.0.0-20160910015056-6961f642d923
@@ -128,7 +96,6 @@ require (
 	github.com/tietang/props v2.2.0+incompatible
 	github.com/tietang/stats v0.0.0-20171114031414-9f32ebcae985
 	github.com/ugorji/go v0.0.0-20170215201144-c88ee250d022 // indirect
-	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v0.0.0-20170224212429-dcecefd839c4 // indirect
 	github.com/vrischmann/go-metrics-influxdb v0.0.0-20160917065939-43af8332c303
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2
@@ -139,14 +106,11 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
-	github.com/ziutek/mymysql v1.5.4 // indirect
-	golang.org/x/net v0.0.0-20190327091125-710a502c58a2
+	golang.org/x/net v0.0.0-20190620200207-3b0461eec859
 	gopkg.in/AlecAivazis/survey.v1 v1.5.3 // indirect
-	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.1 // indirect
 	gopkg.in/ini.v1 v1.37.0
-	gopkg.in/mgo.v2 v2.0.0-20180705113604-9856a29383ce // indirect
 	gopkg.in/russross/blackfriday.v2 v2.0.0-20180526075726-670777b536d3 // indirect
 	gopkg.in/square/go-jose.v2 v2.1.6
 	k8s.io/api v0.0.0-20180308224125-73d903622b73 // indirect
