@@ -30,10 +30,8 @@ require (
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/codegangsta/inject v0.0.0-20150114235600-33e0aa1cb7c0 // indirect
 	github.com/deckarep/golang-set v1.7.1
-	github.com/flosch/pongo2 v0.0.0-20190707114632-bbf5a6c351f4 // indirect
+	github.com/fasthttp-contrib/websocket v0.0.0-20160511215533-1f3b11f56072 // indirect
 	github.com/fukata/golang-stats-api-handler v1.0.0
-	github.com/gavv/monotime v0.0.0-20190418164738-30dba4353424 // indirect
-	github.com/gin-gonic/gin v1.4.0
 	github.com/go-ini/ini v1.47.0
 	github.com/go-martini/martini v0.0.0-20170121215854-22fa46961aab
 	github.com/go-ole/go-ole v1.2.4 // indirect
@@ -41,14 +39,9 @@ require (
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-xorm/xorm v0.7.6
-	github.com/gorilla/schema v1.1.0 // indirect
 	github.com/hashicorp/consul v1.2.0
 	github.com/influxdata/influxdb1-client v0.0.0-20190809212627-fc22c7df067e // indirect
-	github.com/iris-contrib/formBinder v5.0.0+incompatible // indirect
-	github.com/kataras/golog v0.0.0-20190624001437-99c81de45f40 // indirect
-	github.com/kataras/iris v11.1.1+incompatible
-	github.com/klauspost/compress v1.8.4 // indirect
-	github.com/klauspost/cpuid v1.2.1 // indirect
+	github.com/kataras/iris/v12 v12.0.1
 	github.com/lafikl/consistent v0.0.0-20190331123054-b5c3ef09639f
 	github.com/lestrrat/go-file-rotatelogs v0.0.0-20180223000712-d3151e2a480f
 	github.com/mattn/go-colorable v0.1.2
@@ -70,10 +63,11 @@ require (
 	github.com/tietang/hystrix-go v0.0.0-20170922014527-a984df1911a5
 	github.com/tietang/props v2.3.0+incompatible
 	github.com/tietang/stats v0.0.0-20171114031414-9f32ebcae985
+	github.com/valyala/fasthttp v1.6.0 // indirect
 	github.com/vrischmann/go-metrics-influxdb v0.0.0-20190912142519-b52bc0cb4bc6
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
-	golang.org/x/net v0.0.0-20190603091049-60506f45cf65
+	golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297
 	gopkg.in/go-playground/validator.v9 v9.30.0
 	gopkg.in/ini.v1 v1.47.0
 )

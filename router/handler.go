@@ -2,8 +2,8 @@ package router
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
-	"github.com/kataras/iris/core/errors"
 	"github.com/rcrowley/go-metrics"
 	log "github.com/sirupsen/logrus"
 	"github.com/tietang/hystrix-go/hystrix"
@@ -92,12 +92,12 @@ func NewUniversalHandler(conf kvs.ConfigSource) *UniversalHandler {
 	//	rh.Balancer.register(prs)
 	//}
 	//
-	if conf.GetBoolDefault(KEY_CONSUL_ENABLED, false) {
-		log.Info("consul discovery&routes enabled.")
-		crs := NewConsulRouteSource(conf)
-		rh.Router.register(crs)
-		rh.Balancer.register(crs)
-	}
+	//if conf.GetBoolDefault(KEY_CONSUL_ENABLED, false) {
+	//	log.Info("consul discovery&routes enabled.")
+	//	crs := NewConsulRouteSource(conf)
+	//	rh.Router.register(crs)
+	//	rh.Balancer.register(crs)
+	//}
 
 	if conf.GetBoolDefault(KEY_ZK_ENABLED, false) {
 		log.Info("zookeeper routes enabled.")
