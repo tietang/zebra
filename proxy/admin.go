@@ -1,9 +1,10 @@
-package zebra
+package proxy
 
 import (
 	"encoding/json"
 	"fmt"
 	"github.com/tietang/props/kvs"
+	"github.com/tietang/zebra/infra"
 )
 
 type AdminEndpoints struct {
@@ -20,10 +21,10 @@ func NewAdminEndpoints(server *HttpProxyServer, conf kvs.ConfigSource) *AdminEnd
 
 //http://localhost:19091/admin/gray
 //app=RESK&version=1.1&type=addrs&key=&values=10.180.7.112&ranges=&enabled=true
-func (a *AdminEndpoints) AdminGrayConfEndpoint(ctx *Context) error {
+func (a *AdminEndpoints) AdminGrayConfEndpoint(ctx *infra.Context) error {
 	//if faviconIconData == nil || len(faviconIconData) == 0 {
-	//    path := h.conf.GetDefault(KEY_FAVICON_ICO_PATH, "favicon.ico")
-	//    data, err := ioutil.ReadFile(path)
+	//    Path := h.conf.GetDefault(KEY_FAVICON_ICO_PATH, "favicon.ico")
+	//    data, err := ioutil.ReadFile(Path)
 	//    if err != nil {
 	//        return err
 	//    }

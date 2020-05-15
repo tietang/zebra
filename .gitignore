@@ -5,5 +5,4 @@
 .idea/vcs.xml
 .idea/zebra.iml
 app/zebra_linux_amd64-0.2
-proxy/
 logs/

@@ -1,10 +1,11 @@
-package zebra
+package proxy
 
 import (
 	"github.com/rcrowley/go-metrics"
 	log "github.com/sirupsen/logrus"
 	"github.com/tietang/props/kvs"
 	"github.com/tietang/zebra/health"
+	"github.com/tietang/zebra/infra"
 	"github.com/tietang/zebra/router"
 	"net/http"
 	"strconv"
@@ -23,7 +24,7 @@ const (
 	KEY_SERVER_PORT             = "server.port"
 	KEY_SERVER_CONTEXT_PATH     = "server.contextPath"
 	KEY_SERVER_MODE             = "server.mode"
-	KEY_SERVER_FAVICON_ICO_PATH = "server.favicon.ico.path"
+	KEY_SERVER_FAVICON_ICO_PATH = "server.favicon.ico.Path"
 	KEY_SERVER_GMS_ENABLED      = "server.gms.enabled"
 	KEY_SERVER_GMS_DOMAIN       = "server.gms.domain"
 	KEY_SERVER_GMS_PORT         = "server.gms.port"
@@ -40,16 +41,16 @@ const (
 )
 
 type HttpProxyServer struct {
-	dir         string
-	configFile  string
-	port        int
-	conf        kvs.ConfigSource
-	health      *health.RootHealth
-	middleware  Handlers
-	endpoints   []Endpoint
-	contextPath string
+	HttpServerRouter
+	dir        string
+	configFile string
+	port       int
+	conf       kvs.ConfigSource
+	health     *health.RootHealth
+	middleware infra.Handlers
+
 	//
-	stats *Stats
+	Stats *Stats
 }
 
 func NewHttpProxyServer(conf kvs.ConfigSource) *HttpProxyServer {
@@ -60,12 +61,12 @@ func NewHttpProxyServer(conf kvs.ConfigSource) *HttpProxyServer {
 	rootHealth.Healths = make(map[string]*health.Health)
 	contextPath := conf.GetDefault(KEY_SERVER_CONTEXT_PATH, "/")
 	h := &HttpProxyServer{
-		conf:        conf,
-		health:      rootHealth,
-		port:        port,
-		contextPath: contextPath,
+		conf:   conf,
+		health: rootHealth,
+		port:   port,
 	}
-	h.Use(func(context *Context) error {
+	h.ContextPath = contextPath
+	h.Use(func(context *infra.Context) error {
 		return nil
 	})
 	h.initEndpoints()
@@ -88,8 +89,8 @@ func (h *HttpProxyServer) Run(addr string) {
 }
 
 func (h *HttpProxyServer) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	ctx := NewContext(w, req, h.middleware)
-	ctx.handlers = h.middleware
+	ctx := infra.NewContext(w, req, h.middleware)
+	ctx.Handlers = h.middleware
 	//	time.Sleep(time.Millisecond * 100)
 	url := req.URL
 	t := metrics.GetOrRegisterTimer(url.Path, router.UrlRegistry)
@@ -115,7 +116,7 @@ func (h *HttpProxyServer) RunByPort(port int) {
 
 // Use appends Handler(s) to the current Party's routes and child routes.
 // If the current Party is the root, then it registers the middleware to all child Parties' routes too.
-func (r *HttpProxyServer) Use(handlers ...Handler) {
+func (r *HttpProxyServer) Use(handlers ...infra.Handler) {
 	r.middleware = append(r.middleware, handlers...)
 }
 

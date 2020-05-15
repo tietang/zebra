@@ -1,4 +1,4 @@
-package zebra
+package proxy
 
 //
 //import (

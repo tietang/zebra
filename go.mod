@@ -26,11 +26,12 @@ replace (
 )
 
 require (
-	git.imooc.com/wendell1000/infra v0.1.3
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
+	github.com/ajg/form v1.5.1 // indirect
 	github.com/codegangsta/inject v0.0.0-20150114235600-33e0aa1cb7c0 // indirect
 	github.com/deckarep/golang-set v1.7.1
 	github.com/fasthttp-contrib/websocket v0.0.0-20160511215533-1f3b11f56072 // indirect
+	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect
 	github.com/fukata/golang-stats-api-handler v1.0.0
 	github.com/go-ini/ini v1.47.0
 	github.com/go-martini/martini v0.0.0-20170121215854-22fa46961aab
@@ -40,15 +41,23 @@ require (
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-xorm/xorm v0.7.6
 	github.com/hashicorp/consul v1.2.0
+	github.com/imkira/go-interpol v1.1.0 // indirect
 	github.com/influxdata/influxdb1-client v0.0.0-20190809212627-fc22c7df067e // indirect
+	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
+	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
 	github.com/kataras/iris/v12 v12.0.1
 	github.com/lafikl/consistent v0.0.0-20190331123054-b5c3ef09639f
+	github.com/leodido/go-urn v1.2.0 // indirect
+	github.com/lestrrat/go-envload v0.0.0-20180220120943-6ed08b54a570 // indirect
 	github.com/lestrrat/go-file-rotatelogs v0.0.0-20180223000712-d3151e2a480f
+	github.com/lestrrat/go-strftime v0.0.0-20180220042222-ba3bf9c1d042 // indirect
 	github.com/mattn/go-colorable v0.1.2
 	github.com/minio/blake2b-simd v0.0.0-20160723061019-3f5f724cb5b1 // indirect
+	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20190826022208-cac0b30c2563
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
 	github.com/samuel/go-zookeeper v0.0.0-20190810000440-0ceca61e4d75
+	github.com/sergi/go-diff v1.0.0 // indirect
 	github.com/shirou/gopsutil v2.18.12+incompatible
 	github.com/shirou/w32 v0.0.0-20160930032740-bb4de0191aa4 // indirect
 	github.com/sirupsen/logrus v1.4.2
@@ -67,7 +76,13 @@ require (
 	github.com/vrischmann/go-metrics-influxdb v0.0.0-20190912142519-b52bc0cb4bc6
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
+	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
+	github.com/yalp/jsonpath v0.0.0-20180802001716-5cc68e5049a0 // indirect
+	github.com/yudai/gojsondiff v1.0.0 // indirect
+	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
+	github.com/yudai/pp v2.0.1+incompatible // indirect
 	golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297
+	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v9 v9.30.0
 	gopkg.in/ini.v1 v1.47.0
 )

@@ -2,7 +2,7 @@ package router
 
 import (
 	"fmt"
-	"github.com/samuel/go-zookeeper/zk"
+	zookeeper "github.com/samuel/go-zookeeper/zk"
 	"github.com/tietang/props/kvs"
 	"github.com/tietang/props/zk"
 	"os"
@@ -10,6 +10,8 @@ import (
 	"path/filepath"
 	"strconv"
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 var kv map[string]string
@@ -71,15 +73,15 @@ func TestNewZkRouteSource(t *testing.T) {
 	//c.Wait()
 }
 
-func initData(zkConn *zk.Conn, contexts []string, size int) {
+func initData(zkConn *zookeeper.Conn, contexts []string, size int) {
 	for i := 0; i < size; i++ {
 		key := "key-" + strconv.Itoa(i)
 		strSeq := strconv.Itoa(i)
 		value := "/app" + strSeq + "/**=app" + strSeq + ""
 		p := path.Join(contexts[0], key) //  + "/" + KEY_ROUTES_NODE_PREFIX + "/" + key
 		vkey := "app.xx." + key
-		if !kvs.ZkExits(zkConn, p) {
-			_, err := kvs.ZkCreateString(zkConn, p, value)
+		if !zk.ZkExits(zkConn, p) {
+			_, err := zk.ZkCreateString(zkConn, p, value)
 			fmt.Println(key, ": ", value)
 			if err == nil {
 				//log.Println(path)

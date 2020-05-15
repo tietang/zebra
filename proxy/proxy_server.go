@@ -1,4 +1,4 @@
-package zebra
+package proxy
 
 import (
 	"errors"
@@ -12,6 +12,8 @@ import (
 	"github.com/tietang/props/ini"
 	"github.com/tietang/props/kvs"
 	"github.com/tietang/props/zk"
+	"github.com/tietang/zebra/infra"
+	"github.com/tietang/zebra/infra/base"
 	"github.com/tietang/zebra/router"
 	"github.com/x-cray/logrus-prefixed-formatter"
 	"io"
@@ -188,9 +190,7 @@ func NewByFile(fileName string) *ProxyServer {
 	if strings.Contains(ext, "prop") {
 		rootConf = kvs.NewPropertiesConfigSource(file)
 	} else {
-
 		rootConf = ini.NewIniFileConfigSource(file)
-
 	}
 
 	//
@@ -247,6 +247,7 @@ func New(conf kvs.ConfigSource) *ProxyServer {
 		conf:            conf,
 		HttpProxyServer: server,
 	}
+	base.InitLog(conf)
 
 	return p
 }
@@ -278,7 +279,7 @@ func (p *ProxyServer) run() {
 
 // Use appends Handler(s) to the current Party's routes and child routes.
 // If the current Party is the root, then it registers the middleware to all child Parties' routes too.
-func (r *ProxyServer) Use(handlers ...Handler) {
+func (r *ProxyServer) Use(handlers ...infra.Handler) {
 	r.HttpProxyServer.Use(handlers...)
 }
 
@@ -288,7 +289,7 @@ func (h *ProxyServer) setupRouter() {
 
 	h.HttpProxyServer.health.AddAll(handler.Router.GetHealthCheckers())
 
-	h.Use(func(context *Context) error {
+	h.Use(func(context *infra.Context) error {
 		handler.Handle(context.ResponseWriter, context.Request)
 		return nil
 	})
