@@ -12,12 +12,3 @@ func init() {
 	infra.Register(&base.HookStarter{})
 	infra.Register(&proxy.ProxyServerStarter{})
 }
-
-type Bootstrap struct {
-	Bootstrap     string
-	File          string
-	ZkUrls        string
-	ZkRoot        string
-	ConsulAddress string
-	ConsulRoot    string
-}
