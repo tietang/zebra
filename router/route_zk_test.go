@@ -15,11 +15,41 @@ import (
 )
 
 var kv map[string]string
+var zk_mock_started bool = false
 
 func init() {
 
 	kv = make(map[string]string)
+	if !zk_mock_started {
+		go kvs.ExecCommand("pwd", "-LP")
+		go StartMockTestZookeeper()
+	}
+	fmt.Println(os.Getwd())
 }
+
+func StartMockTestZookeeper() <-chan int {
+	ec := make(chan int, 1)
+	pwd, _ := os.Getwd()
+	jar := filepath.Join(pwd, "zk.mock-exec.jar")
+	fmt.Println(jar)
+	if !zk_mock_started {
+
+		command := "java"
+		params := []string{"-jar", jar}
+		started := kvs.ExecCommand(command, params...)
+
+		if started {
+			ec <- 1
+		} else {
+			ec <- 0
+		}
+	} else {
+		ec <- 1
+	}
+
+	return ec
+}
+
 func TestNewZkRouteSource(t *testing.T) {
 	dir, _ := os.Getwd()
 	//cmd := filepath.Join(dir, "mock.jar")

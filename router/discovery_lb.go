@@ -19,25 +19,19 @@ const (
 	STATUS_DOWN = "DOWN" // Do not send traffic- healthcheck routeChangedCallback failed
 
 	//
-	LB_LOG_ENABLED                = "lb.log.selected.enabled"
-	LB_LOG_ALL                    = "lb.log.selected.all"
-	KEY_LB_NAME_TEMPLATE          = "%s.balancer.name"
-	KEY_FIBONACCI_BASE_TEMPLATE   = "%s.fibonacci.base"
-	KEY_MAX_FAILS_TEMPLATE        = "%s.max.fails"
-	KEY_FAIL_TIME_WINDOW_TEMPLATE = "%s.fail.time.window"
-	KEY_FAIL_SLEEP_MODE_TEMPLATE  = "%s.fail.sleep.mode"
-	KEY_FAIL_SLEEP_X_TEMPLATE     = "%s.fail.sleep.x"
-	KEY_FAIL_SLEEP_MAX_TEMPLATE   = "%s.fail.sleep.max"
-	LB_DEFAULT_NAME               = "lb.default"
-	DEFAULT_LB_MAX_FAILS          = 3
-	DEFAULT_FAIL_TIME_WINDOW      = 10 * time.Second
-	DEFAULT_FAIL_SLEEP_X          = 1
-	DEFAULT_FAIL_SLEEP_MODE_SEQ   = "seq"
-	DEFAULT_FAIL_SLEEP_MODE       = DEFAULT_FAIL_SLEEP_MODE_SEQ
-	DEFAULT_FAIL_SLEEP_MAX        = 60 * time.Second
-	DEFAULT_LB_NAME               = "WeightRobinRound"
-	INSTANCE_EXPIRED_TIME         = 60 * time.Second
-	DEFAULT_FIBONACCI_BASE        = 100
+	LB_LOG_ENABLED = "lb.log.selected.enabled"
+	LB_LOG_ALL     = "lb.log.selected.all"
+
+	LB_DEFAULT_NAME             = "lb.default"
+	DEFAULT_LB_MAX_FAILS        = 3
+	DEFAULT_FAIL_TIME_WINDOW    = 10 * time.Second
+	DEFAULT_FAIL_SLEEP_X        = 1
+	DEFAULT_FAIL_SLEEP_MODE_SEQ = "seq"
+	DEFAULT_FAIL_SLEEP_MODE     = DEFAULT_FAIL_SLEEP_MODE_SEQ
+	DEFAULT_FAIL_SLEEP_MAX      = 60 * time.Second
+	DEFAULT_LB_NAME             = "WeightRobinRound"
+	INSTANCE_EXPIRED_TIME       = 60 * time.Second
+	DEFAULT_FIBONACCI_BASE      = 100
 )
 
 var DEFAULT_FAIL_SLEEP_SEQ_X = []int{1, 1, 2, 3, 5, 8}
@@ -483,7 +477,7 @@ func (d *DiscoveryBalancer) nextHostInstance(balancer Balancer, key string, host
 func (r *DiscoveryBalancer) IsOpenFailedSleep(ins *HostInstance) bool {
 	//仍然在Sleep窗口
 	now := time.Now()
-	if ins.lastSleepExpectedCloseTime != nil && ins.lastSleepExpectedCloseTime.After(now) {
+	if ins.LastSleepExpectedCloseTime != nil && ins.LastSleepExpectedCloseTime.After(now) {
 		log.WithFields(log.Fields{
 			"HostInstance": ins,
 		}).Error("to be sleep cause for still in Sleep time window： ")
@@ -532,7 +526,7 @@ func (r *DiscoveryBalancer) isFailedSleepForFixedMode(ins *HostInstance) bool {
 		return true
 	} else {
 		//如果在sleep窗口外无失败sleep，则重置
-		if ins.lastSleepOpenTime != nil {
+		if ins.LastSleepOpenTime != nil {
 			log.WithFields(log.Fields{
 				"fails":        fails,
 				"errCount":     errCount,
@@ -560,10 +554,10 @@ func (r *DiscoveryBalancer) isFailedSleepForSeqMode(ins *HostInstance) bool {
 
 	//如果当前时间已经超过预期的sleep窗口关闭时间1.5个周期，则作为新的Seq Sleep window开始；否则仍然为seq Sleep window期间。
 	expectedNextWindow := time.Now().Truncate(utils.DurationOneHalf(w))
-	if ins.lastSleepExpectedCloseTime != nil && ins.lastSleepExpectedCloseTime.Before(expectedNextWindow) {
+	if ins.LastSleepExpectedCloseTime != nil && ins.LastSleepExpectedCloseTime.Before(expectedNextWindow) {
 		//如果不Sleep，则重置
 		ins.ResetFailedSleepFlag()
-		if ins.lastSleepOpenTime != nil {
+		if ins.LastSleepOpenTime != nil {
 			log.WithFields(log.Fields{
 				"fails":        fails,
 				"errCount":     errCount,
@@ -580,16 +574,16 @@ func (r *DiscoveryBalancer) isFailedSleepForSeqMode(ins *HostInstance) bool {
 			"HostInstance": ins,
 		}).Error("to be sleep cause for error greater than or equals to fails.")
 		//如果多次连续Sleep的第一次，则设置第一次Sleep时间
-		if ins.lastSleepOpenTime == nil {
+		if ins.LastSleepOpenTime == nil {
 			now := time.Now()
-			ins.lastSleepOpenTime = &now
+			ins.LastSleepOpenTime = &now
 		}
 
 		//失败后，服务停止周期倍数
 		x := r.getAppFailSleepX(ins.AppName)
 
 		sleepx := r.getAppFailSleepSeqX(ins.AppName)
-		limit := ins.lastSleepWindowSeqCount
+		limit := ins.LastSleepWindowSeqCount
 
 		if limit >= len(sleepx) {
 			limit = len(sleepx) - 1
@@ -600,7 +594,7 @@ func (r *DiscoveryBalancer) isFailedSleepForSeqMode(ins *HostInstance) bool {
 				x += sleepx[i]
 			}
 		}
-		x = sleepx[ins.lastSleepWindowSeqCount]
+		x = sleepx[ins.LastSleepWindowSeqCount]
 		sleepDuration := utils.DurationMuti(w, int64(x))
 		//如果sleepDuration大于配置的fail.sleep.max,则用fail.sleep.max替代
 		appMaxFailedSleep := getAppMaxFailedSleep(r.conf, ins.AppName)
@@ -613,7 +607,7 @@ func (r *DiscoveryBalancer) isFailedSleepForSeqMode(ins *HostInstance) bool {
 		return true
 	} else {
 		//如果不Sleep，则重置
-		if ins.lastSleepOpenTime != nil {
+		if ins.LastSleepOpenTime != nil {
 			log.WithFields(log.Fields{
 				"fails":        fails,
 				"errCount":     errCount,

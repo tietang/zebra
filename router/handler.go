@@ -22,16 +22,12 @@ import (
 )
 
 const (
-	METER_ERROR_REQUEST_PREFIX = "error:"
-	METER_OK_REQUEST_PREFIX    = "ok:"
-	METER_50X_REQUEST_PREFIX   = "50x:"
-	METER_40X_REQUEST_PREFIX   = "40x:"
-	KEY_SERVER_MODE            = "server.mode"
-	MODE_CLIENT                = "client"
-	MODE_REVERSE_PROXY         = "reverseproxy"
-	DEFAULT_MODE               = MODE_CLIENT
-	SERVER_DEBUG               = "server.debug"
-	HTTP_PROXY_SERVER_NAME     = "zebra"
+	KEY_SERVER_MODE        = "server.mode"
+	MODE_CLIENT            = "client"
+	MODE_REVERSE_PROXY     = "reverseproxy"
+	DEFAULT_MODE           = MODE_CLIENT
+	SERVER_DEBUG           = "server.debug"
+	HTTP_PROXY_SERVER_NAME = "zebra"
 )
 
 var DefaultRouters []*Router
@@ -145,7 +141,7 @@ func NewUniversalHandler(conf kvs.ConfigSource) *UniversalHandler {
 
 	//外部注册扩展
 	log.Info("register ext & plugins: ")
-	for i, rs := range globalRouterSources {
+	for i, rs := range GetGlobalRouterSources() {
 		rs.Build()
 		rh.Router.register(rs)
 		rh.Balancer.register(rs)
@@ -176,7 +172,7 @@ func (h *UniversalHandler) Handle(w http.ResponseWriter, req *http.Request) bool
 	//    TargetPath: targetPath,
 	//    Error:      err,
 	//}
-	if h.handleError("route error,", ctx.Error, ctx) {
+	if h.handleError("host error,", ctx.Error, ctx) {
 		return false
 	}
 	//if ctx.Error != nil {
@@ -223,7 +219,7 @@ func (h *UniversalHandler) hystrix(ctx *RequestContext) error {
 	_, appName, targetPath, _ := ctx.QueryStr, ctx.AppName, ctx.TargetPath, ctx.Error
 
 	method := req.Method
-	//if h.handleError("route error: ", err, ctx) {
+	//if h.handleError("host error: ", err, ctx) {
 	//    return err
 	//}
 	cmdKey := appName + ":" + method + ":" + targetPath
@@ -568,7 +564,7 @@ func (h *UniversalHandler) forward(ctx *RequestContext) error {
 
 	err := h.innerForward(ctx)
 
-	if h.handleError("route error: ", err, ctx) {
+	if h.handleError("host error: ", err, ctx) {
 		return nil
 	}
 	return err
@@ -608,9 +604,9 @@ func (h *UniversalHandler) route(path string) (string, string, error) {
 	log.Debug(path)
 	route := h.Router.GetMatchRoute(path)
 	if route == nil {
-		return "", "", utils.NewNotFoundRouteError(utils.ErrNotFoundRouteError, "not found route for path: "+path)
+		return "", "", utils.NewNotFoundRouteError(utils.ErrNotFoundRouteError, "not found host for path: "+path)
 	} else {
-		log.WithField("route", route).Debug()
+		log.WithField("host", route).Debug()
 	}
 
 	targetPath := route.GetRouteTargetPath(path)

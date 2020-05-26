@@ -126,8 +126,8 @@ func (r *HttpProxyServer) Use(handlers ...infra.Handler) {
 //// Use it when you want to add a global middleware to all parties, to all routes in  all subdomains
 //// It should be called right before Listen functions
 //func (r *HttpProxyServer) UseGlobal(handlers ...Handler) {
-//    //for _, route := range r.Routes {
-//    //    route.Handlers = append(handlers, route.Handlers...) // prepend the handlers
+//    //for _, host := range r.Routes {
+//    //    host.Handlers = append(handlers, host.Handlers...) // prepend the handlers
 //    //}
 //    r.middleware = append(handlers, r.middleware...) // set as middleware on the next routes too
 //}

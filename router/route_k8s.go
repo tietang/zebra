@@ -65,7 +65,7 @@ package router
 //		if routePrefix == "" {
 //			urlPattern = "/" + appName + "/**"
 //		}
-//		route := &Route{
+//		host := &Route{
 //			Source:        urlPattern,
 //			ServiceId:     s.Name,
 //			StripPrefix:   true,
@@ -73,9 +73,9 @@ package router
 //			IsForceUpdate: true,
 //		}
 //
-//		h.Add(route)
+//		h.Add(host)
 //
-//		log.WithField("route", route).Debug("add router by Kubernetes: ")
+//		log.WithField("host", host).Debug("add router by Kubernetes: ")
 //
 //		//for _, instance := range s.Instances {
 //		//    h.hostChangedCallback(appName, newHostInstanceByInstance(appName, instance))

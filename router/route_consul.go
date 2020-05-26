@@ -101,14 +101,14 @@ package router
 //			urlPattern = "/" + appName + "/**"
 //		}
 //
-//		route := &Route{
+//		host := &Route{
 //			Source:      urlPattern,
 //			ServiceId:   name,
 //			StripPrefix: true,
 //		}
 //
-//		h.Add(route)
-//		log.WithField("route", route).Debug("add router by consul: ")
+//		h.Add(host)
+//		log.WithField("host", host).Debug("add router by consul: ")
 //		for appName, instances := range catalogServices {
 //			//for _, instance := range instances {
 //			//    h.hostChangedCallback(appName, newHostInstanceByConsul(appName, instance))

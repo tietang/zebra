@@ -70,7 +70,7 @@ func (h *EurekaRouteSource) updateDiscoveryRouter(apps *eureka.Applications) {
 
 		h.AddInTime(route)
 
-		//log.WithField("route", route).Debug("add router by eureka: ")
+		//log.WithField("host", host).Debug("add router by eureka: ")
 		size := len(a.Instances)
 		hosts := make([]*HostInstance, size)
 		for i, instance := range a.Instances {
@@ -117,7 +117,7 @@ func newHostInstanceByEureka(appName string, ins *eureka.InstanceInfo) *HostInst
 		Weight:               weight,
 		Version:              version,
 	}
-	h.init()
+	h.Init()
 	return h
 }
 

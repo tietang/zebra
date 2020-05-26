@@ -14,9 +14,9 @@ func TestRobinTheSameWeight(t *testing.T) {
 
 		var hosts1 = make([]*HostInstance, 0)
 
-		hosts1 = append(hosts1, &HostInstance{Name: "a", Weight: 1, lock: new(sync.Mutex)})
-		hosts1 = append(hosts1, &HostInstance{Name: "b", Weight: 1, lock: new(sync.Mutex)})
-		hosts1 = append(hosts1, &HostInstance{Name: "c", Weight: 1, lock: new(sync.Mutex)})
+		hosts1 = append(hosts1, &HostInstance{Name: "a", Weight: 1})
+		hosts1 = append(hosts1, &HostInstance{Name: "b", Weight: 1})
+		hosts1 = append(hosts1, &HostInstance{Name: "c", Weight: 1})
 
 		r := WeightRobinRound{Lock: new(sync.Mutex)}
 		var h *HostInstance
@@ -49,9 +49,9 @@ func TestRobinTheSameWeight2(t *testing.T) {
 
 		var hosts1 = make([]*HostInstance, 0)
 
-		hosts1 = append(hosts1, &HostInstance{Name: "172.16.1.248:7912", Weight: 1, lock: new(sync.Mutex)})
-		hosts1 = append(hosts1, &HostInstance{Name: "172.16.1.248:7913", Weight: 1, lock: new(sync.Mutex)})
-		hosts1 = append(hosts1, &HostInstance{Name: "172.16.1.248:7914", Weight: 1, lock: new(sync.Mutex)})
+		hosts1 = append(hosts1, &HostInstance{Name: "172.16.1.248:7912", Weight: 1})
+		hosts1 = append(hosts1, &HostInstance{Name: "172.16.1.248:7913", Weight: 1})
+		hosts1 = append(hosts1, &HostInstance{Name: "172.16.1.248:7914", Weight: 1})
 		r := WeightRobinRound{Lock: new(sync.Mutex)}
 		var h *HostInstance
 		Convey("next方法调用，分布准确2", func() {
@@ -94,9 +94,9 @@ func TestRobinDiffWeight(t *testing.T) {
 
 		var hosts1 = make([]*HostInstance, 0)
 
-		hosts1 = append(hosts1, &HostInstance{Name: "a", Weight: 1, lock: new(sync.Mutex)})
-		hosts1 = append(hosts1, &HostInstance{Name: "b", Weight: 2, lock: new(sync.Mutex)})
-		hosts1 = append(hosts1, &HostInstance{Name: "c", Weight: 3, lock: new(sync.Mutex)})
+		hosts1 = append(hosts1, &HostInstance{Name: "a", Weight: 1})
+		hosts1 = append(hosts1, &HostInstance{Name: "b", Weight: 2})
+		hosts1 = append(hosts1, &HostInstance{Name: "c", Weight: 3})
 
 		r := WeightRobinRound{Lock: new(sync.Mutex)}
 
