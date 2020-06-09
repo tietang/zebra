@@ -26,6 +26,9 @@ replace (
 )
 
 require (
+	gitee.com/tietang/terrace-go v1.0.1
+	github.com/CloudyKit/jet v2.1.3-0.20180809161101-62edd43e4f88+incompatible // indirect
+	github.com/Joker/jade v1.0.1-0.20190614124447-d475f43051e7 // indirect
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/codegangsta/inject v0.0.0-20150114235600-33e0aa1cb7c0 // indirect
@@ -33,7 +36,7 @@ require (
 	github.com/fasthttp-contrib/websocket v0.0.0-20160511215533-1f3b11f56072 // indirect
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect
 	github.com/fukata/golang-stats-api-handler v1.0.0
-	github.com/go-ini/ini v1.47.0
+	github.com/go-ini/ini v1.56.0
 	github.com/go-martini/martini v0.0.0-20170121215854-22fa46961aab
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/go-playground/locales v0.13.0
@@ -45,7 +48,7 @@ require (
 	github.com/influxdata/influxdb1-client v0.0.0-20190809212627-fc22c7df067e // indirect
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
-	github.com/kataras/iris/v12 v12.0.1
+	github.com/kataras/iris/v12 v12.1.8
 	github.com/lafikl/consistent v0.0.0-20190331123054-b5c3ef09639f
 	github.com/leodido/go-urn v1.2.0 // indirect
 	github.com/lestrrat/go-envload v0.0.0-20180220120943-6ed08b54a570 // indirect
@@ -58,14 +61,14 @@ require (
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
 	github.com/samuel/go-zookeeper v0.0.0-20190810000440-0ceca61e4d75
 	github.com/sergi/go-diff v1.0.0 // indirect
-	github.com/shirou/gopsutil v2.18.12+incompatible
+	github.com/shirou/gopsutil v2.20.5+incompatible
 	github.com/shirou/w32 v0.0.0-20160930032740-bb4de0191aa4 // indirect
-	github.com/sirupsen/logrus v1.4.2
+	github.com/sirupsen/logrus v1.6.0
 	github.com/smartystreets/goconvey v0.0.0-20190306220146-200a235640ff
 	github.com/tebeka/strftime v0.1.3 // indirect
 	github.com/thoas/stats v0.0.0-20190407194641-965cb2de1678
 	github.com/tietang/assert v0.0.0-20160910015056-6961f642d923
-	github.com/tietang/dbx v1.0.0
+	github.com/tietang/dbx v1.0.1
 	github.com/tietang/go-eureka-client/eureka v0.0.0-20190327071554-ed5a2bb78851
 	github.com/tietang/go-utils v0.1.3
 	github.com/tietang/godaemon v0.0.0-20160320101618-2d183393d9ee
@@ -81,8 +84,8 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
-	golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297
+	golang.org/x/net v0.0.0-20200520182314-0ba52f642ac2
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
-	gopkg.in/go-playground/validator.v9 v9.30.0
-	gopkg.in/ini.v1 v1.47.0
+	gopkg.in/go-playground/validator.v9 v9.31.0
+	gopkg.in/ini.v1 v1.51.1
 )

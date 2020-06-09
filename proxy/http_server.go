@@ -21,7 +21,7 @@ const (
 const (
 	//key
 	KEY_SERVER_DEBUG            = "server.debug"
-	KEY_SERVER_PORT             = "server.port"
+	KEY_SERVER_PORT             = "app.server.port"
 	KEY_SERVER_CONTEXT_PATH     = "server.contextPath"
 	KEY_SERVER_MODE             = "server.mode"
 	KEY_SERVER_FAVICON_ICO_PATH = "server.favicon.ico.Path"

@@ -27,7 +27,6 @@ type CPUPercentages struct {
 	Steal     float64
 	Guest     float64
 	GuestNice float64
-	Stolen    float64
 	Total     float64
 }
 
@@ -153,8 +152,8 @@ func (s *Stats) CalculateCPUTimes() []CPUPercentages {
 		cpuStat = &percentages[i]
 		prevStat = s.CPUInfo.PrevCPUTimes[i]
 
-		total = t.User + t.System + t.Idle + t.Nice + t.Iowait + t.Irq + t.Softirq + t.Steal + t.Guest + t.GuestNice + t.Stolen
-		prevTotal = prevStat.User + prevStat.System + prevStat.Idle + prevStat.Nice + prevStat.Iowait + prevStat.Irq + prevStat.Softirq + prevStat.Steal + prevStat.Guest + prevStat.GuestNice + prevStat.Stolen
+		total = t.User + t.System + t.Idle + t.Nice + t.Iowait + t.Irq + t.Softirq + t.Steal + t.Guest + t.GuestNice
+		prevTotal = prevStat.User + prevStat.System + prevStat.Idle + prevStat.Nice + prevStat.Iowait + prevStat.Irq + prevStat.Softirq + prevStat.Steal + prevStat.Guest + prevStat.GuestNice
 
 		diff = total - prevTotal
 
@@ -169,7 +168,6 @@ func (s *Stats) CalculateCPUTimes() []CPUPercentages {
 		cpuStat.Steal = (t.Steal - prevStat.Steal) / diff * 100
 		cpuStat.Guest = (t.Guest - prevStat.Guest) / diff * 100
 		cpuStat.GuestNice = (t.GuestNice - prevStat.GuestNice) / diff * 100
-		cpuStat.Stolen = (t.Stolen - prevStat.Stolen) / diff * 100
 		cpuStat.Total = 100 * (diff - (t.Idle - prevStat.Idle)) / diff
 	}
 
@@ -216,8 +214,8 @@ func (s *Stats) CalculateTotalCPUTimes() []CPUPercentages {
 		cpuStat = &percentages[i]
 		prevStat = s.CPUInfo.PrevTotalTimes[i]
 
-		total = t.User + t.System + t.Idle + t.Nice + t.Iowait + t.Irq + t.Softirq + t.Steal + t.Guest + t.GuestNice + t.Stolen
-		prevTotal = prevStat.User + prevStat.System + prevStat.Idle + prevStat.Nice + prevStat.Iowait + prevStat.Irq + prevStat.Softirq + prevStat.Steal + prevStat.Guest + prevStat.GuestNice + prevStat.Stolen
+		total = t.User + t.System + t.Idle + t.Nice + t.Iowait + t.Irq + t.Softirq + t.Steal + t.Guest + t.GuestNice
+		prevTotal = prevStat.User + prevStat.System + prevStat.Idle + prevStat.Nice + prevStat.Iowait + prevStat.Irq + prevStat.Softirq + prevStat.Steal + prevStat.Guest + prevStat.GuestNice
 
 		diff = total - prevTotal
 
@@ -232,7 +230,6 @@ func (s *Stats) CalculateTotalCPUTimes() []CPUPercentages {
 		cpuStat.Steal = (t.Steal - prevStat.Steal) / diff * 100
 		cpuStat.Guest = (t.Guest - prevStat.Guest) / diff * 100
 		cpuStat.GuestNice = (t.GuestNice - prevStat.GuestNice) / diff * 100
-		cpuStat.Stolen = (t.Stolen - prevStat.Stolen) / diff * 100
 		cpuStat.Total = 100 * (diff - (t.Idle - prevStat.Idle)) / diff
 	}
 

@@ -2,9 +2,9 @@ package proxy
 
 import (
 	"flag"
+	"gitee.com/tietang/terrace-go/boot"
 	log "github.com/sirupsen/logrus"
 	"github.com/tietang/props/kvs"
-	"github.com/tietang/zebra/infra"
 	"runtime"
 	"strings"
 )
@@ -25,11 +25,12 @@ func SetBootstrap(b *Bootstrap) {
 }
 
 type ProxyServerStarter struct {
-	infra.BaseStarter
+	boot.BaseStarter
 	proxy *ProxyServer
 }
 
-func (i *ProxyServerStarter) Init(ctx infra.StarterContext) {
+func (i *ProxyServerStarter) Init(ctx boot.StarterContext) {
+
 	logDump()
 	bootstrap = &Bootstrap{}
 	InitBootstrapByArgs(bootstrap)
@@ -41,9 +42,9 @@ func (i *ProxyServerStarter) Init(ctx infra.StarterContext) {
 	//    fmt.Printf("#%d    :%s\n", i, param)
 	//}
 	log.WithField("bootstrap", bootstrap).Debug()
-
 	if bootstrap.Bootstrap == "file" {
-		i.proxy = NewByFile(bootstrap.File)
+		//i.proxy = NewByFile(bootstrap.File)
+		i.proxy = New(ctx.Props())
 	}
 	if bootstrap.Bootstrap == "zk" {
 		urls := strings.Split(bootstrap.ZkUrls, ",") //[]string{"127.0.0.1:2181"}
@@ -55,10 +56,14 @@ func (i *ProxyServerStarter) Init(ctx infra.StarterContext) {
 		root := bootstrap.ConsulRoot       //"zebra/bootstrap"
 		i.proxy = NewByConsulKeyValue(address, root)
 	}
+	if i.proxy == nil {
+		log.Panic("proxy server is nil.")
+	}
+	i.proxy.conf = ctx.Props()
 
 }
 
-func (i *ProxyServerStarter) Start(ctx infra.StarterContext) {
+func (i *ProxyServerStarter) Start(ctx boot.StarterContext) {
 	i.proxy.Start()
 }
 func (i *ProxyServerStarter) StartBlocking() bool {
