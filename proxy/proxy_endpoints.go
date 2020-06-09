@@ -6,7 +6,6 @@ import (
 	"github.com/rcrowley/go-metrics"
 	"github.com/thoas/stats"
 	"github.com/tietang/hystrix-go/hystrix"
-	"github.com/tietang/zebra/infra"
 	"github.com/tietang/zebra/meter"
 	"github.com/tietang/zebra/router"
 	"github.com/tietang/zebra/utils"
@@ -43,7 +42,7 @@ func (h *HttpProxyServer) rootEndpoint() {
 		Version: Version,
 		Name:    Name,
 	}
-	h.Get("/", func(ctx *infra.Context) error {
+	h.Get("/", func(ctx *Context) error {
 
 		data, err := json.Marshal(s)
 		if err != nil {
@@ -70,7 +69,7 @@ func (h *HttpProxyServer) rootEndpoint() {
 //}
 
 func (h *HttpProxyServer) hostsEndpoint() {
-	h.Get("/hosts", func(ctx *infra.Context) error {
+	h.Get("/hosts", func(ctx *Context) error {
 
 		kv1 := make(map[string]interface{})
 		router.DefaultHosts.Range(func(key, value interface{}) bool {
@@ -96,7 +95,7 @@ func (h *HttpProxyServer) hostsEndpoint() {
 
 }
 func (h *HttpProxyServer) faviconIconEndpoint() {
-	h.Get("/favicon.ico", func(ctx *infra.Context) error {
+	h.Get("/favicon.ico", func(ctx *Context) error {
 		//if faviconIconData == nil || len(faviconIconData) == 0 {
 		//    Path := h.conf.GetDefault(KEY_FAVICON_ICO_PATH, "favicon.ico")
 		//    data, err := ioutil.ReadFile(Path)
@@ -115,7 +114,7 @@ func (h *HttpProxyServer) faviconIconEndpoint() {
 }
 
 func (h *HttpProxyServer) routesEndpoint() {
-	h.Get("/routes", func(ctx *infra.Context) error {
+	h.Get("/routes", func(ctx *Context) error {
 
 		data, err := json.Marshal(router.DefaultRouters)
 		if err != nil {
@@ -128,7 +127,7 @@ func (h *HttpProxyServer) routesEndpoint() {
 }
 func (h *HttpProxyServer) healthEndpoint() {
 
-	h.Get("/health", func(ctx *infra.Context) error {
+	h.Get("/health", func(ctx *Context) error {
 		h.health.Check()
 		data, err := json.Marshal(h.health)
 		if err != nil {
@@ -148,7 +147,7 @@ func (h *HttpProxyServer) metricsEndpoint() {
 		"services":        router.ServiceRegistry,
 		"instances":       router.InstanceRegistry,
 	}
-	h.Get("/metrics", func(ctx *infra.Context) error {
+	h.Get("/metrics", func(ctx *Context) error {
 
 		data, err := meter.MarshalJSON(registries)
 
@@ -162,7 +161,7 @@ func (h *HttpProxyServer) metricsEndpoint() {
 
 func (h *HttpProxyServer) infoEndpoint() {
 	startTime = time.Now().Format("2006-01-02T15:04:05.999999-07:00")
-	h.Get("/info", func(ctx *infra.Context) error {
+	h.Get("/info", func(ctx *Context) error {
 		m := make(map[string]string)
 		m["startTime"] = startTime
 		data, err := json.Marshal(m)
@@ -177,7 +176,7 @@ func (h *HttpProxyServer) infoEndpoint() {
 func (h *HttpProxyServer) hystrixStreamEndpoint() {
 	hs := hystrix.NewStreamHandler()
 	hs.Start()
-	h.Get("/hystrix.stream", func(ctx *infra.Context) error {
+	h.Get("/hystrix.stream", func(ctx *Context) error {
 		hs.ServeHTTP(ctx.ResponseWriter, ctx.Request)
 		return nil
 	})
@@ -185,7 +184,7 @@ func (h *HttpProxyServer) hystrixStreamEndpoint() {
 
 func (h *HttpProxyServer) stats0Endpoint() {
 
-	h.Get("/stats0", func(ctx *infra.Context) error {
+	h.Get("/stats0", func(ctx *Context) error {
 		stats_api.Handler(ctx.ResponseWriter, ctx.Request)
 		return nil
 	})
@@ -199,13 +198,13 @@ func (h *HttpProxyServer) statsEndPoint() {
 	if StatsMiddleware == nil {
 		StatsMiddleware = stats.New()
 	}
-	h.Use(func(ctx *infra.Context) error {
+	h.Use(func(ctx *Context) error {
 		beginning, _ := StatsMiddleware.Begin(ctx.ResponseWriter)
 		ctx.Next()
 		StatsMiddleware.End(beginning)
 		return nil
 	})
-	h.Get("/Stats", func(ctx *infra.Context) error {
+	h.Get("/Stats", func(ctx *Context) error {
 		ctx.ResponseWriter.Header().Set("Content-Type", "application/json")
 
 		stats := StatsMiddleware.Data()
@@ -286,7 +285,7 @@ func (p *HttpProxyServer) StartStatsServer() {
 func (h *HttpProxyServer) gmsEndpoint() {
 	conf := h.conf
 	isEnabled := conf.GetBoolDefault(KEY_SERVER_GMS_ENABLED, true)
-	h.Get("/gms", func(ctx *infra.Context) error {
+	h.Get("/gms", func(ctx *Context) error {
 		if isEnabled {
 			data, err := json.Marshal(h.Stats)
 			if err != nil {

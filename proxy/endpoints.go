@@ -2,7 +2,6 @@ package proxy
 
 import (
 	log "github.com/sirupsen/logrus"
-	"github.com/tietang/zebra/infra"
 	"net/http"
 	"path"
 	"strings"
@@ -28,7 +27,7 @@ type Endpoint struct {
 	Id      string
 	Method  string
 	Path    string
-	Handler infra.Handler
+	Handler Handler
 }
 
 type HttpServerRouter struct {
@@ -36,7 +35,7 @@ type HttpServerRouter struct {
 	ContextPath string
 }
 
-func (h *HttpServerRouter) Add(method, pathStr string, handler infra.Handler) {
+func (h *HttpServerRouter) Add(method, pathStr string, handler Handler) {
 	e := Endpoint{
 		Id:      strings.Join([]string{method, pathStr}, ":"),
 		Method:  method,
@@ -64,7 +63,7 @@ func (h *HttpServerRouter) Add(method, pathStr string, handler infra.Handler) {
 
 }
 
-func (h *HttpServerRouter) endpointExec(method, path string, ctx *infra.Context) bool {
+func (h *HttpServerRouter) endpointExec(method, path string, ctx *Context) bool {
 	e := h.find(method, path)
 	if e == nil {
 		return false
@@ -87,33 +86,33 @@ func (h *HttpServerRouter) find(method, path string) *Endpoint {
 	return nil
 }
 
-func (h *HttpServerRouter) Any(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Any(path string, handler Handler) {
 	h.Add(MethodAny, path, handler)
 }
-func (h *HttpServerRouter) Get(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Get(path string, handler Handler) {
 	h.Add(MethodGet, path, handler)
 }
-func (h *HttpServerRouter) Post(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Post(path string, handler Handler) {
 	h.Add(MethodPost, path, handler)
 }
-func (h *HttpServerRouter) Put(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Put(path string, handler Handler) {
 	h.Add(MethodPut, path, handler)
 }
-func (h *HttpServerRouter) Delete(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Delete(path string, handler Handler) {
 	h.Add(MethodDelete, path, handler)
 }
-func (h *HttpServerRouter) Connect(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Connect(path string, handler Handler) {
 	h.Add(MethodConnect, path, handler)
 }
-func (h *HttpServerRouter) Head(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Head(path string, handler Handler) {
 	h.Add(MethodHead, path, handler)
 }
-func (h *HttpServerRouter) Patch(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Patch(path string, handler Handler) {
 	h.Add(MethodPatch, path, handler)
 }
-func (h *HttpServerRouter) Options(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Options(path string, handler Handler) {
 	h.Add(MethodOptions, path, handler)
 }
-func (h *HttpServerRouter) Trace(path string, handler infra.Handler) {
+func (h *HttpServerRouter) Trace(path string, handler Handler) {
 	h.Add(MethodTrace, path, handler)
 }

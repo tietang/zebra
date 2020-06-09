@@ -5,7 +5,6 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/tietang/props/kvs"
 	"github.com/tietang/zebra/health"
-	"github.com/tietang/zebra/infra"
 	"github.com/tietang/zebra/router"
 	"net/http"
 	"strconv"
@@ -47,7 +46,7 @@ type HttpProxyServer struct {
 	port       int
 	conf       kvs.ConfigSource
 	health     *health.RootHealth
-	middleware infra.Handlers
+	middleware Handlers
 
 	//
 	Stats *Stats
@@ -66,7 +65,7 @@ func NewHttpProxyServer(conf kvs.ConfigSource) *HttpProxyServer {
 		port:   port,
 	}
 	h.ContextPath = contextPath
-	h.Use(func(context *infra.Context) error {
+	h.Use(func(context *Context) error {
 		return nil
 	})
 	h.initEndpoints()
@@ -89,7 +88,7 @@ func (h *HttpProxyServer) Run(addr string) {
 }
 
 func (h *HttpProxyServer) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	ctx := infra.NewContext(w, req, h.middleware)
+	ctx := NewContext(w, req, h.middleware)
 	ctx.Handlers = h.middleware
 	//	time.Sleep(time.Millisecond * 100)
 	url := req.URL
@@ -116,7 +115,7 @@ func (h *HttpProxyServer) RunByPort(port int) {
 
 // Use appends Handler(s) to the current Party's routes and child routes.
 // If the current Party is the root, then it registers the middleware to all child Parties' routes too.
-func (r *HttpProxyServer) Use(handlers ...infra.Handler) {
+func (r *HttpProxyServer) Use(handlers ...Handler) {
 	r.middleware = append(r.middleware, handlers...)
 }
 

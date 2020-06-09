@@ -8,7 +8,6 @@ import (
 	"github.com/tietang/props/ini"
 	"github.com/tietang/props/kvs"
 	"github.com/tietang/props/zk"
-	"github.com/tietang/zebra/infra"
 	"github.com/tietang/zebra/router"
 	"net/http"
 	_ "net/http/pprof"
@@ -145,7 +144,7 @@ func (p *ProxyServer) run() {
 
 // Use appends Handler(s) to the current Party's routes and child routes.
 // If the current Party is the root, then it registers the middleware to all child Parties' routes too.
-func (r *ProxyServer) Use(handlers ...infra.Handler) {
+func (r *ProxyServer) Use(handlers ...Handler) {
 	r.HttpProxyServer.Use(handlers...)
 }
 
@@ -155,7 +154,7 @@ func (h *ProxyServer) setupRouter() {
 
 	h.HttpProxyServer.health.AddAll(handler.Router.GetHealthCheckers())
 
-	h.Use(func(context *infra.Context) error {
+	h.Use(func(context *Context) error {
 		handler.Handle(context.ResponseWriter, context.Request)
 		return nil
 	})
